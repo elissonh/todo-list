@@ -1,0 +1,150 @@
+:root {
+    --title-font: "Pacifico", cursive;
+    --title-color: black;
+    --text-font: "Delius", cursive;
+    --text-color: black;
+    --text-inverse-color: #ffffff;
+    --body-background-color: #768686;
+    --primary-color: #88DEBD;
+    --main-background-color: #ffffff;
+    --task-background-color: rgba(0, 0, 0, 0.05);
+    --input-background-color: var(--task-background-color);
+    --task-icon-color: black;
+    --dimmed-text-color: #8b898b;
+    --line-through-color: #8b898b;
+    /* Universal */
+    --task-filled-icon-color: var(--primary-color);
+    --box-radius: 6px;
+    --danger-color: #9c2121;
+    --element-base-space: 22px;
+}
+
+/* General */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-family: var(--text-font);
+    border-radius: var(--box-radius);
+}
+button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Main */
+h1 {
+    font-family: var(--title-font);
+    color: var(--title-color);
+    font-size: 2rem;
+    margin-bottom: var(--element-base-space);
+    text-align: center;
+}
+body {
+    min-height: 100vh;
+    background-color: var(--body-background-color);
+    background-image: url(./assets/bg.svg);
+    background-size: cover;
+    color: var(--text-color);
+    padding: var(--element-base-space);
+    display: flex;
+    justify-content: center;
+}
+main {
+    width: 100%;
+    max-width: 600px;
+    min-height: 400px;
+    height: fit-content;
+    background-color: var(--main-background-color);
+    padding: var(--element-base-space);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+}
+
+.input-container {
+    display: flex;
+    margin-bottom: var(--element-base-space);
+    position: relative;
+}
+input {
+    background-color: var(--input-background-color);
+    min-width: 0;
+    flex: 1 1;
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px 65px 10px 15px;
+}
+input:focus {
+    outline: none;
+    border: 3px solid var(--primary-color);
+}
+input::placeholder {
+    font-size: .9rem;
+    color: var(--dimmed-text-color);
+}
+.add-task-button {
+    width: 50px;
+    height: 100%;
+    background-color: var(--primary-color);
+    position: absolute;
+    right: 0;
+    transition: background-color .5s;
+}
+.add-task-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color), white 30%);;
+}
+.add-task-button span.material-symbols-outlined {
+    color: var(--text-inverse-color);
+}
+
+.task {
+    background-color: var(--task-background-color);
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    gap: calc(var(--element-base-space) / 2);
+    margin-bottom: calc(var(--element-base-space) / 2);
+}
+.task p {
+    min-width: 0;
+    flex: 1;
+    word-wrap: break-word
+}
+.task.is-done p {
+    color: var(--line-through-color);
+    text-decoration: line-through;
+}
+.task button span.material-symbols-outlined {
+    color: var(--task-icon-color);
+    font-variation-settings:
+        'FILL' 0
+}
+.task.is-done button#check-button span.material-symbols-outlined   {
+    color: var(--task-filled-icon-color);
+    font-variation-settings:
+        'FILL' 1
+}
+.task button.delete-task-button span.material-symbols-outlined:hover {
+    color: var(--danger-color) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --title-font: "Pacifico", cursive;
+        --title-color: #ffffff;
+        --text-font: "Delius", cursive;
+        --text-color: #ffffff;
+        --text-inverse-color: black;
+        --primary-color: #88DEBD;
+        --main-background-color: #0F0F0F;
+        --task-background-color: #272327;
+        --input-background-color: var(--task-background-color);
+        --task-icon-color: #ffffff;
+        --dimmed-text-color: #8b898b;
+        --line-through-color: #8b898b;
+    }
+}
