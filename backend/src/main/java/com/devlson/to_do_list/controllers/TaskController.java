@@ -48,7 +48,7 @@ public class TaskController {
 
     @PutMapping(path = "/tasks/{id}")
     public ResponseEntity<TaskDto> updateTask(@PathVariable("id") Long id, @RequestBody TaskDto taskDto) {
-        if(taskService.exists(id)) {
+        if(!taskService.exists(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -62,9 +62,14 @@ public class TaskController {
 
     @PatchMapping(path = "/tasks/{id}")
     public ResponseEntity<TaskDto> patchTask(@PathVariable("id") Long id, @RequestBody TaskDto taskDto) {
-        if(taskService.exists(id)) {
+        if(!taskService.exists(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
+        taskDto.setId(id);
+
+        TaskEntity existingTask = taskService.findOne(id).orElseThrow(() -> new RuntimeException("Task not found"));
+        taskDto.setDescription(existingTask.getDescription());
 
         taskDto.setId(id);
         TaskEntity taskEntity = taskMapper.mapFrom(taskDto);
