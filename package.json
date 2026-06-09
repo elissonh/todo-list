@@ -1,7 +1,0 @@
-{
-  "name": "fullstack-runner",
-  "private": true,
-  "scripts": {
-    "dev": "./scripts/dev.sh"
-  }
-}
