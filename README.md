@@ -1,3 +1,5 @@
+[![en](https://img.shields.io/badge/lang-en-red.svg)](./README-en.md)
+
 # 📜 Lista de Tarefas — Aplicação Full Stack
 
 Aplicação full-stack para gerenciamento de tarefas construída com **Spring Boot**, **React** e **PostgreSQL**, conteinerizada com **Docker Compose**. Este projeto busca aplicar conceitos de design de APIs RESTful, modelagem de banco de dados relacional e integração entre frontend e backend.
