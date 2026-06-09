@@ -15,7 +15,6 @@ A full stack task management application built with **Spring Boot**, **React**, 
 - [API Reference](#api-reference)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-- [Design Decisions](#design-decisions)
 
 ---
 
@@ -54,7 +53,7 @@ This application allows users to create, read, update, and delete tasks through 
 
 ## 🗄️ Database Design
 
-### Entity: `todos`
+### Entity: `task`
 
 ```sql
 CREATE TABLE task (
@@ -176,7 +175,7 @@ docker compose up --build
 |---|---|
 | React frontend | http://localhost:3000 |
 | Spring Boot API | http://localhost:8080/tasks/ |
-| PostgreSQL | `localhost:5432` (user: `postgres`, db: `public`) |
+| PostgreSQL | `localhost:5432` (user: `postgres`, db: `tododb`) |
 
 ### Stop the stack
 
