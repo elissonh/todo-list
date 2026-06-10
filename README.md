@@ -8,13 +8,14 @@ Aplicação full-stack para gerenciamento de tarefas construída com **Spring Bo
 
 ## 📌 Sumário
 
-- [Visão Geral](#visão-geral)
-- [Arquitetura do Sistema](#arquitetura-do-sistema)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Modelagem do Banco de Dados](#modelagem-do-banco-de-dados)
-- [Referência da API](#referência-da-api)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Como Executar](#como-executar)
+- [Visão Geral](#-visão-geral)
+<!-- - [Arquitetura do Sistema](#-arquitetura-do-sistema) -->
+- [Arquitetura do Sistema](#️-arquitetura-do-sistema)
+- [Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+- [Modelagem do Banco de Dados](#️-modelagem-do-banco-de-dados)
+- [Referência da API](#-referência-da-api)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Como Executar](#-como-executar)
 
 ---
 
@@ -82,16 +83,16 @@ CREATE TABLE task (
 
 | Método | Endpoint | Descrição | Corpo da Requisição | Resposta |
 |----------|----------|-----------|---------------------|-----------|
-| `GET` | `/tasks` | Lista todas as tarefas | — | `200 OK` — lista de tarefas |
-| `GET` | `/tasks/{id}` | Obtém uma tarefa específica | — | `200 OK` / `404 Not Found` |
-| `POST` | `/tasks` | Cria uma nova tarefa | `{ "description": "Ler um livro" }` | `201 Created` — tarefa criada |
-| `PUT` | `/tasks/{id}` | Atualização completa da tarefa | `{ "description": "Ler um livro", "done": boolean }` | `200 OK` — tarefa atualizada |
-| `PATCH` | `/tasks/{id}` | Atualização parcial da tarefa | `{ "done": boolean }` | `200 OK` — tarefa atualizada |
-| `DELETE` | `/tasks/{id}` | Remove uma tarefa | — | `204 No Content` |
+| `GET` | `/api/tasks` | Lista todas as tarefas | — | `200 OK` — lista de tarefas |
+| `GET` | `/api/tasks/{id}` | Obtém uma tarefa específica | — | `200 OK` / `404 Not Found` |
+| `POST` | `/api/tasks` | Cria uma nova tarefa | `{ "description": "Ler um livro" }` | `201 Created` — tarefa criada |
+| `PUT` | `/api/tasks/{id}` | Atualização completa da tarefa | `{ "description": "Ler um livro", "done": boolean }` | `200 OK` — tarefa atualizada |
+| `PATCH` | `/api/tasks/{id}` | Atualização parcial da tarefa | `{ "done": boolean }` | `200 OK` — tarefa atualizada |
+| `DELETE` | `/api/tasks/{id}` | Remove uma tarefa | — | `204 No Content` |
 
 ### Exemplos de Payloads
 
-#### Criar Tarefa — `POST /tasks`
+#### Criar Tarefa — `POST /api/tasks`
 
 ```json
 // Requisição
@@ -108,7 +109,7 @@ CREATE TABLE task (
 }
 ```
 
-#### Atualizar Tarefa — `PATCH /tasks/1`
+#### Atualizar Tarefa — `PATCH /api/tasks/1`
 
 ```json
 // Requisição

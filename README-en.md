@@ -8,13 +8,13 @@ A full stack task management application built with **Spring Boot**, **React**, 
 
 ## 📌 Table of Contents
 
-- [Overview](#overview)
-- [System Architecture](#system-architecture)
-- [Tech Stack](#tech-stack)
-- [Database Design](#database-design)
-- [API Reference](#api-reference)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
+- [Overview](#-overview)
+- [System Architecture](#️-system-architecture)
+- [Tech Stack](#️-tech-stack)
+- [Database Design](#️-database-design)
+- [API Reference](#-api-reference)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
 
 ---
 
@@ -78,16 +78,16 @@ CREATE TABLE task (
 
 | Method | Endpoint | Description | Request Body | Response |
 |---|---|---|---|---|
-| `GET` | `/tasks` | List all todos | — | `200 OK` — array of todos |
-| `GET` | `/tasks/{id}` | Get a single todo | — | `200 OK` / `404 Not Found` |
-| `POST` | `/tasks` | Create a new todo | `{ "description": "Read a book" }` | `201 Created` — created todo |
-| `PUT` | `/tasks/{id}` | Full update of a todo | `{ "description": "Read a book", "done": boolean }` | `200 OK` — updated todo |
-| `PATCH` | `/tasks/{id}` | Partial update of a todo | `{ "done": boolean }` | `200 OK` — updated todo |
-| `DELETE` | `/tasks/{id}` | Delete a todo | — | `204 No Content` |
+| `GET` | `/api/tasks` | List all todos | — | `200 OK` — array of todos |
+| `GET` | `/api/tasks/{id}` | Get a single todo | — | `200 OK` / `404 Not Found` |
+| `POST` | `/api/tasks` | Create a new todo | `{ "description": "Read a book" }` | `201 Created` — created todo |
+| `PUT` | `/api/tasks/{id}` | Full update of a todo | `{ "description": "Read a book", "done": boolean }` | `200 OK` — updated todo |
+| `PATCH` | `/api/tasks/{id}` | Partial update of a todo | `{ "done": boolean }` | `200 OK` — updated todo |
+| `DELETE` | `/api/tasks/{id}` | Delete a todo | — | `204 No Content` |
 
 ### Example Payloads
 
-**Create — `POST /tasks`**
+**Create — `POST /api/tasks`**
 ```json
 // Request
 {
@@ -103,7 +103,7 @@ CREATE TABLE task (
 }
 ```
 
-**Update — `PATCH /tasks/1`**
+**Update — `PATCH /api/tasks/1`**
 ```json
 // Request
 { "done": true }
