@@ -63,9 +63,6 @@ public class TaskController {
 
     @PatchMapping(path = "/api/tasks/{id}")
     public ResponseEntity<TaskDto> patchTask(@PathVariable Long id, @RequestBody TaskDto taskDto) {
-        // if(!taskService.exists(id)) {
-        //     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        // }
         TaskEntity existingTask = taskService.findOne(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
