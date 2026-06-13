@@ -10,12 +10,18 @@ function App() {
   const suggestions = ['Lavar a louça', 'Ler um livro', 'Limpar o quarto', 'Fazer exercício'];
   const [suggestionIndex, setSuggestionIndex] = useState(0);
 
+  /**
+   * Get all tasks
+  */
   useEffect(() => {
     fetchTasks()
       .then(data => setTasks(data))
       .catch(err => console.error(err));
   }, []);
 
+  /**
+   * Suggests tasks examples in input
+  */
   useEffect(() => {
     const interval = setInterval(() => {
       setSuggestionIndex(i => (i + 1) % suggestions.length);
@@ -25,6 +31,9 @@ function App() {
   }, []);
 
   async function addTask() {
+    /**
+     * Creates a new task
+    */
     if (inputValue.trim() === '') return;
     try {
       const newTask = await createTask(inputValue);
@@ -36,6 +45,9 @@ function App() {
   }
 
   async function handleToggleTask(id) {
+    /**
+     * Set task to done or undone by id
+    */
     const task = tasks.find(t => t.id === id);
     try {
       const updatedTask = await toggleTask(id, !task.done);
@@ -46,6 +58,9 @@ function App() {
   }
 
   async function handleTaskDelete(id) {
+    /**
+     * Delete a task by id
+    */
     try {
       await deleteTask(id);
       setTasks(tasks => tasks.filter(t => t.id !== id));
