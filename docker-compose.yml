@@ -31,6 +31,7 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: admin
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      CORS_ALLOWED_ORIGIN: http://localhost:8080
     depends_on:
       db:
         condition: service_healthy
