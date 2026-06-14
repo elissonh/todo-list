@@ -31,7 +31,7 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: admin
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      CORS_ALLOWED_ORIGIN: http://localhost:8080
+      CORS_ALLOWED_ORIGIN: http://localhost:3000
     depends_on:
       db:
         condition: service_healthy
@@ -40,11 +40,11 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8080/api
     ports:
       - "3000:3000"
     restart: on-failure
-    environment:
-      REACT_APP_API_URL: http://localhost:8080/api/tasks
     depends_on:
       - backend
 
