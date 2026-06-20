@@ -27,10 +27,13 @@ public class TaskEntity {
     @Column(updatable = false)
     private LocalDateTime created_at;
 
-    private boolean done;
+    private Boolean done = false;
 
     @PrePersist
     protected void onCreate() {
         this.created_at = LocalDateTime.now();
+        if (this.done == null) {
+            this.done = false;
+        }
     }
 }
