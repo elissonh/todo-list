@@ -136,21 +136,37 @@ Após iniciar a aplicação, visite: `http://localhost:8080/swagger-ui/index.htm
 
 ## 📁 Estrutura do Projeto
 
-```text
-todo-app/
+Este projeto segue um padrão de **Arquitetura em Camadas** com uma clara separação de responsabilidades.
+
+``` text
+todo-list/
 ├── backend/                        # Aplicação Spring Boot
-│   ├── src/main/java/com/todo/
+│   ├── src/main/java/com/to_do_list/
+│   │   ├── config/
+│   │   │   ├── CorsConfig.java
+│   │   │   ├── MapperConfig.java
+│   │   │   └── OpenApiConfig.java
 │   │   ├── controllers/
 │   │   │   └── TaskController.java
-│   │   ├── service/
-│   │   │   └── TodoService.java    # Camada de regras de negócio
-│   │   ├── repositories/
-│   │   │   └── TaskRepository.java # Interface Spring Data JPA
 │   │   ├── domain/
-│   │   │   └── dto
-│   │   │   └── entities
+│   │   │   ├── dto/
+│   │   │   │   └── TaskDto.java
+│   │   │   └── entities/
+│   │   │       └── TaskEntity.java
+│   │   ├── exceptions/
+│   │   │   └── ErrorResponse.java
+│   │   ├── mappers/
+│   │   │   ├── impl/
+│   │   │   │   └── TaskMapperImpl.java
+│   │   │   └── Mapper.java
+│   │   ├── repositories/
+│   │   │   └── TaskRepository.java
+│   │   ├── services/
+│   │   │   ├── impl/
+│   │   │   │   └── TaskServiceImpl.java
+│   │   │   └── TaskService.java
 │   ├── src/main/resources/
-│   │   └── application.properties  # Configuração do banco e servidor
+│   │   └── application.properties  # Configuração do servidor
 │   └── pom.xml
 │
 ├── frontend/                       # Aplicação React
@@ -162,8 +178,8 @@ todo-app/
 │   │   └── App.jsx
 │   └── package.json
 │
-├── docker-compose.yml              # Orquestra todos os serviços
-├── README-en.md
+├── docker-compose.yml              # Orchestração dos serviços
+└── README-en.md
 └── README.md
 ```
 

@@ -127,19 +127,35 @@ After starting the server, visit: `http://localhost:8080/swagger-ui/index.html`
 
 ## 📁 Project Structure
 
-```
-todo-app/
+This project follows a **Layered Architecture** pattern with clear separation of concerns:
+
+``` text
+todo-list/
 ├── backend/                        # Spring Boot application
-│   ├── src/main/java/com/todo/
+│   ├── src/main/java/com/to_do_list/
+│   │   ├── config/
+│   │   │   ├── CorsConfig.java
+│   │   │   ├── MapperConfig.java
+│   │   │   └── OpenApiConfig.java
 │   │   ├── controllers/
 │   │   │   └── TaskController.java
-│   │   ├── service/
-│   │   │   └── TodoService.java    # Business logic layer
-│   │   ├── repositories/
-│   │   │   └── TaskRepository.java # Spring Data JPA interface
 │   │   ├── domain/
-│   │   │   └── dto
-│   │   │   └── entities
+│   │   │   ├── dto/
+│   │   │   │   └── TaskDto.java
+│   │   │   └── entities/
+│   │   │       └── TaskEntity.java
+│   │   ├── exceptions/
+│   │   │   └── ErrorResponse.java
+│   │   ├── mappers/
+│   │   │   ├── impl/
+│   │   │   │   └── TaskMapperImpl.java
+│   │   │   └── Mapper.java
+│   │   ├── repositories/
+│   │   │   └── TaskRepository.java
+│   │   ├── services/
+│   │   │   ├── impl/
+│   │   │   │   └── TaskServiceImpl.java
+│   │   │   └── TaskService.java
 │   ├── src/main/resources/
 │   │   └── application.properties  # DB config, server port
 │   └── pom.xml
