@@ -12,9 +12,9 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Lista de Tarefas API")
+                        .title("API Lista de Tarefas")
                         .version("1.0.0")
-                        .description("API para gerenciamento de tarefas")
+                        .description("API para gerenciamento de tarefas.")
                 );
     }
 }

@@ -85,6 +85,12 @@ CREATE TABLE task (
 | `PATCH` | `/api/tasks/{id}` | Partial update of a todo | `{ "done": boolean }` | `200 OK` — updated todo |
 | `DELETE` | `/api/tasks/{id}` | Delete a todo | — | `204 No Content` |
 
+### API Documentation
+
+This project uses [Swagger UI](https://swagger.io/tools/swagger-ui/) to expose interactive API docs.
+
+After starting the server, visit: `http://localhost:8080/swagger-ui/index.html`
+
 ### Example Payloads
 
 **Create — `POST /api/tasks`**

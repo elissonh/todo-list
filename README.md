@@ -90,6 +90,12 @@ CREATE TABLE task (
 | `PATCH` | `/api/tasks/{id}` | Atualização parcial da tarefa | `{ "done": boolean }` | `200 OK` — tarefa atualizada |
 | `DELETE` | `/api/tasks/{id}` | Remove uma tarefa | — | `204 No Content` |
 
+### Documentação da API
+
+Este projeto utiliza [Swagger UI](https://swagger.io/tools/swagger-ui/) para expor a documentação da API.
+
+Após iniciar a aplicação, visite: `http://localhost:8080/swagger-ui/index.html`
+
 ### Exemplos de Payloads
 
 #### Criar Tarefa — `POST /api/tasks`
