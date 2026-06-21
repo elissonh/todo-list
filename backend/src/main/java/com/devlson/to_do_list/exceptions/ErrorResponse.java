@@ -12,7 +12,7 @@ public class ErrorResponse {
     @Schema(description = "Código HTTP do erro", example = "404")
     private int status;
 
-    @Schema(description = "Mensagem de erro", example = "Tarefa não encontrada")
+    @Schema(description = "Mensagem de erro", example = "Tarefa com id '1' não encontrada")
     private String message;
 
     @Schema(description = "Momento em que o erro ocorreu")

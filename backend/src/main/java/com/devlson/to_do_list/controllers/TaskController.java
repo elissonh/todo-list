@@ -55,7 +55,15 @@ public class TaskController {
                     description = "Descrição da tarefa vazia ou inválida.",
                     content = @Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation = ErrorResponse.class)
+                            schema = @Schema(implementation = ErrorResponse.class),
+                            examples = @ExampleObject(
+                                    value = """
+                                {
+                                    "statusCode": 400,
+                                    "message": "Descrição da tarefa não pode ser vazia"
+                                }
+                                """
+                            )
                     )
             )
     })
@@ -147,9 +155,11 @@ public class TaskController {
             )
     })
     @PutMapping(path = "/api/tasks/{id}")
-    public ResponseEntity<TaskDto> updateTask(@PathVariable("id") Long id, @RequestBody TaskDto taskDto) {
+    public ResponseEntity<?> updateTask(@PathVariable("id") Long id, @RequestBody TaskDto taskDto) {
         if(!taskService.exists(id)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(
+                    new ErrorResponse(404, "Tarefa com id '" + id + "' não encontrada"),
+                    HttpStatus.NOT_FOUND);
         }
 
         taskDto.setId(id);
@@ -183,7 +193,7 @@ public class TaskController {
             )
     })
     @PatchMapping(path = "/api/tasks/{id}")
-    public ResponseEntity<TaskDto> patchTask(
+    public ResponseEntity<?> patchTask(
             @PathVariable Long id,
             @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     description = "Campos a serem alterados na tarefa",
@@ -212,7 +222,13 @@ public class TaskController {
             )
             @RequestBody TaskDto taskDto) {
         TaskEntity existingTask = taskService.findOne(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElse(null);
+
+        if(existingTask == null) {
+            return new ResponseEntity<>(
+                    new ErrorResponse(404, "Tarefa com id '" + id + "' não encontrada."),
+                    HttpStatus.NOT_FOUND);
+        }
 
         if (taskDto.getDescription() == null) {
             taskDto.setDescription(existingTask.getDescription());
@@ -245,7 +261,13 @@ public class TaskController {
             )
     })
     @DeleteMapping(path = "/api/tasks/{id}")
-    public ResponseEntity<TaskDto> deleteTask(@PathVariable Long id) {
+    public ResponseEntity<?> deleteTask(@PathVariable Long id) {
+        if(!taskService.exists(id)) {
+            return new ResponseEntity<>(
+                    new ErrorResponse(404, "Tarefa com id '" + id + "' não encontrada."),
+                    HttpStatus.NOT_FOUND);
+        }
+
         taskService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
