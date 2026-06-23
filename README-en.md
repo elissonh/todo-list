@@ -26,15 +26,7 @@ This application allows users to create, read, update, and delete tasks through 
 
 ## ⚙️ System Architecture
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│                     Docker Network                           │
-│  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐  │
-│  │   React App  │ ->  │  Spring Boot │ ->  │PostgreSQL    │  │
-│  │  (Port 3000) │     │  (Port 8080) │     │  (Port 5432) │  │
-│  └──────────────┘     └──────────────┘     └──────────────┘  │
-└──────────────────────────────────────────────────────────────┘
-```
+![Alt text](docs/architecture-en.svg)
 
 ---
 

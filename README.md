@@ -29,16 +29,7 @@ Todos os serviços são orquestrados com Docker Compose, tornando todo o ambient
 
 ## ⚙️ Arquitetura do Sistema
 
-```text
-┌──────────────────────────────────────────────────────────────┐
-│                     Rede Docker                              │
-│  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐  │
-│  │ Aplicação    │ ->  │ Spring Boot  │ ->  │ PostgreSQL   │  │
-│  │ React        │     │ (Porta 8080) │     │ (Porta 5432) │  │
-│  │ (Porta 3000) │     │              │     │              │  │
-│  └──────────────┘     └──────────────┘     └──────────────┘  │
-└──────────────────────────────────────────────────────────────┘
-```
+![Alt text](docs/architecture.svg)
 
 ---
 
